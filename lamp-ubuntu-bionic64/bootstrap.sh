@@ -3,82 +3,72 @@
 ################
 
 
-# general setup commands #
-##########################
-
-# all commands are executed as root automatically
-
 # dpkg-preconfigure: unable to re-open stdin
 export DEBIAN_FRONTEND=noninteractive
 
-# update os && upgrade os
-apt-get -y update && apt-get -y upgrade
+# Update packages
+apt-get update
 
-# apt packages
-apt-get -y install \
-  git \
-  htop \
-  tree \
-  neofetch \
-	vim
+# Upgrade packages
+apt-get upgrade -y
 
+# Install git
+apt-get install -y git
 
-# lamp stack setup #
-####################
+# Install htop
+apt-get install -y htop
 
-# install apache
-apt-get -y install apache2
+# Install tree
+apt-get install -y tree
 
-# enable apache mod_rewrite
+# Install neofetch
+apt-get install -y neofetch
+
+# Install Apache
+apt-get install -y apache2
+
+# Enable Apache Mod_Rewrite
 a2enmod rewrite
 
-# restart apache
-systemctl restart apache2
+# Install PHP 7.2
+apt-get install -y php
 
-# install php
-apt-get -y install php
+# Install PHP Mods
+apt-get install -y php7.2-common
+apt-get install -y php7.2-zip
+apt-get install -y libapache2-mod-php7.2
 
-# install php apache mod
-apt-get -y install libapache2-mod-php7.2
+# Install composer
+apt-get install composer
 
-# php extra mods
-apt-get -y install php7.2-common
-apt-get -y install php7.2-zip
-
-# install composer
-apt-get install Composer
-
-# restart apache
-service apache2 restart
-
-# set mysql password
+# Set MySQL password
 debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
 debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
 
-# install mysql
-apt-get -y install mysql-server
+# Install MySQL
+apt-get install -y mysql-server
 
-# php-mysql lib
-apt-get -y install php7.2-mysql
+# PHP-MYSQL lib
+apt-get install -y php7.2-mysql
 
-# restart apache
-service apache2 restart
+# Install phpmyadmin
+# apt-get install phpmyadmin php-mbstring php-gettext -y
 
-# install phpmyadmin
-# apt-get install phpmyadmin php-mbstring php-gettext
-
-# install nodejs
-# command here
+# Install node.js 12.X
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+sudo apt-get install -y nodejs
 
 # set local timezone
-# sudo dpkg-reconfigure tzdata
+sudo timedatectl set-timezone 'Europe/Rome'
 
+# Download WordPress
+# rm -rf /var/www/html/
+# wget -P http://wordpress.org/latest.tar.gz /var/www/html/
+# tar xzf /var/www/html/latest.tar.gz
+# mv /var/www/html/wordpress/* /var/www/html/
+# rm -rf /var/www/html/wordpress /var/www/html/latest.tar.gz
+# chown -R www-data: /var/www/html/.
+# touch /var/www/html/wp-config.php
 
-# wordpress setup #
-###################
-
-# install wp-cli
-# command here
-
-# install wordpress
-# command here
+# Restart Apache
+service apache2 restart
