@@ -25,41 +25,41 @@ apt-get install -y tree
 apt-get install -y neofetch
 
 # Install Apache
-apt-get install -y apache2
+# apt-get install -y apache2
 
 # Enable Apache Mod_Rewrite
-a2enmod rewrite
+# a2enmod rewrite
 
 # Install PHP 7.2
-apt-get install -y php
+# apt-get install -y php
 
 # Install PHP Mods
-apt-get install -y php7.2-common
-apt-get install -y php7.2-zip
-apt-get install -y libapache2-mod-php7.2
+# apt-get install -y php7.2-common
+# apt-get install -y php7.2-zip
+# apt-get install -y libapache2-mod-php7.2
 
 # Install composer
-apt-get install composer
+# apt-get install composer
 
 # Set MySQL password
-debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
-debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
+# debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
+# debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
 
 # Install MySQL
-apt-get install -y mysql-server
+# apt-get install -y mysql-server
 
 # PHP-MYSQL lib
-apt-get install -y php7.2-mysql
+# apt-get install -y php7.2-mysql
 
 # Install phpmyadmin
 # apt-get install phpmyadmin php-mbstring php-gettext -y
 
 # Install node.js 12.X
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-sudo apt-get install -y nodejs
+# curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+# sudo apt-get install -y nodejs
 
 # set local timezone
-sudo timedatectl set-timezone 'Europe/Rome'
+# sudo timedatectl set-timezone 'Europe/Rome'
 
 # Download WordPress
 # rm -rf /var/www/html/
@@ -71,4 +71,5 @@ sudo timedatectl set-timezone 'Europe/Rome'
 # touch /var/www/html/wp-config.php
 
 # Restart Apache
-service apache2 restart
+# service apache2 restart
+
